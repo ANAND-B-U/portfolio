@@ -1,8 +1,0 @@
-flask
-openai
-python-dotenv
-groq
-langchain_chroma
-langchain_huggingface
-scikit-learn
-pandas
