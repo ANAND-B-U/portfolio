@@ -16,7 +16,7 @@ const skillsData = [
     category: "Languages",
     items: [
       { name: "Python", level: "Expert" },
-      { name: "Go", level: "Expert" },
+      { name: "Java", level: "Expert" },
       { name: "SQL", level: "Advanced" },
     ],
   },
