@@ -37,7 +37,7 @@ bun dev
 ## Author
 
 ```
-Developed by ThemeWagon and development team.
+Developed by ThemeWagon and rebuild by ANAND B.
 ```
 
 ## License
