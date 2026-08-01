@@ -25,7 +25,7 @@ const addressData = [
   {
     icon: faEnvelope,
     title: "GitHub",
-    description: "Vishnu0501",
+    description: "ANAND-B-U",
   },
 ];
 
