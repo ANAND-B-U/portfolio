@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const telegramSVG = (
   <svg
     className="w-5 h-5"
@@ -16,21 +18,54 @@ const commonClass =
   "bg-transparent border-b border-white/20 focus:border-[#60a5fa] text-white placeholder-gray-500 text-sm md:text-base py-3 outline-none transition-all duration-300";
 
 const Form = () => {
+  const [status, setStatus] = useState(""); // "", "sending", "success", "error"
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    const formData = new FormData(e.target);
+    formData.append("access_key", "5e39b416-8d65-4488-86cf-6ebbce8c8d65"); // 👈 PUT YOUR KEY HERE
+    formData.append("subject", "New message from your portfolio!");
+    formData.append("from_name", "Portfolio Contact Form");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+        e.target.reset();
+        setTimeout(() => setStatus(""), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus(""), 5000);
+      }
+    } catch (err) {
+      setStatus("error");
+      setTimeout(() => setStatus(""), 5000);
+    }
+  };
+
   return (
     <div className="rounded-[32px] border border-white/10 bg-[#081025] p-6 shadow-[0_25px_80px_rgba(0,0,0,0.2)]">
       <h3 className="text-xl font-semibold text-white mb-4">Send me a message</h3>
       <p className="text-gray-400 text-sm md:text-base mb-6">
         I'm always open to discussing product design work or partnership opportunities.
       </p>
-      <form className="grid gap-5">
+      <form onSubmit={handleSubmit} className="grid gap-5">
         <div className="grid sm:grid-cols-2 gap-4">
-          <input type="text" placeholder="Name*" className={commonClass} required />
-          <input type="email" placeholder="Email*" className={commonClass} required />
+          <input type="text" name="name" placeholder="Name*" className={commonClass} required />
+          <input type="email" name="email" placeholder="Email*" className={commonClass} required />
         </div>
 
-        <input type="text" placeholder="Location" className={commonClass} />
-        <input type="text" placeholder="Subject*" className={commonClass} required />
+        <input type="text" name="location" placeholder="Location" className={commonClass} />
+        <input type="text" name="subject" placeholder="Subject*" className={commonClass} required />
         <textarea
+          name="message"
           placeholder="Message*"
           className={`${commonClass} h-28 resize-none`}
           required
@@ -38,10 +73,22 @@ const Form = () => {
 
         <button
           type="submit"
-          className="w-full bg-gradient-to-r from-[#17a3ff] to-[#1079f4] text-white font-semibold py-4 rounded-full flex items-center justify-center gap-3 hover:shadow-[0_0_30px_rgba(23,163,255,0.35)] transition-all duration-300 text-sm"
+          disabled={status === "sending"}
+          className="w-full bg-gradient-to-r from-[#17a3ff] to-[#1079f4] text-white font-semibold py-4 rounded-full flex items-center justify-center gap-3 hover:shadow-[0_0_30px_rgba(23,163,255,0.35)] transition-all duration-300 text-sm disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          Send Message {telegramSVG}
+          {status === "sending" ? "Sending..." : "Send Message"} {telegramSVG}
         </button>
+
+        {status === "success" && (
+          <p className="text-green-400 text-sm text-center">
+            ✅ Message sent successfully! I'll get back to you soon.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="text-red-400 text-sm text-center">
+            ❌ Something went wrong. Please try again.
+          </p>
+        )}
       </form>
     </div>
   );
