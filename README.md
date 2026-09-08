@@ -31,7 +31,7 @@ Welcome to my personal portfolio! This is a modern, responsive, and fast web app
 To run this project locally on your machine, follow these steps:
 
 ### 1. Clone the repository
-```bash
+bash
 git clone https://github.com/ANAND-B-U/portfolio.git
 cd portfolio
 
