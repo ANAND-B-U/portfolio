@@ -5,7 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 const Home = lazy(() => import("../pages/Home.jsx"));
 const Main = lazy(() => import("../layouts/Main.jsx"));
 
-const repoName = import.meta.env.VITE_REPO_NAME || "";
+// We removed the env variable since we deleted .env.local!
 
 export const router = createBrowserRouter(
   [
@@ -24,5 +24,5 @@ export const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: `/${repoName}` }
+  { basename: '/portfolio' } // 👈 HARDCODED! (No trailing slash here)
 );
