@@ -31,7 +31,7 @@ Welcome to my personal portfolio! This is a modern, responsive, and fast web app
 To run this project locally on your machine, follow these steps:
 
 ### 1. Clone the repository
-```bash
+bash
 git clone https://github.com/ANAND-B-U/portfolio.git
 cd portfolio
 
@@ -39,27 +39,27 @@ cd portfolio
 
 npm install
 
-3. Start the development server
+### 3. Start the development server
 npm run dev
 
 Open http://localhost:5173 in your browser to see the result.
 
-🌐 Deployment
+## 🌐 Deployment
 This portfolio is hosted on GitHub Pages.
 The Vite configuration (vite.config.js) is set with base: '/portfolio/' and outDir: 'docs' to ensure assets load correctly from the GitHub Pages subpath.
 A CNAME file is included in the public folder to support custom domain routing (if applicable).
 
 
-📬 Contact
+## 📬 Contact
 Have a project in mind or want to collaborate? Feel free to reach out!
 Email: [Your Email Here]
 LinkedIn: [Your LinkedIn URL]
 GitHub: github.com/ANAND-B-U
 
 
-📄 License
+## 📄 License
 This project is open-source and available under the MIT License.
 
 
-Built with ❤️ by Anand B
+### Built with ❤️ by Anand B
 
