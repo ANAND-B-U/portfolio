@@ -35,7 +35,7 @@ To run this project locally on your machine, follow these steps:
 git clone https://github.com/ANAND-B-U/portfolio.git
 cd portfolio
 
-2. Install dependencies
+### 2. Install dependencies
 
 npm install
 

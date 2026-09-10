@@ -38,10 +38,10 @@ const projectData = [
     id: 4,
     image: card4,
     category: "WEB DEVELOPMENT",
-    title: "E-Commerce Platform",
+    title: "AI Travel Planner",
     description:
       "Developed a full-stack e-commerce platform with Flask backend, featuring user authentication, product management, and payment integration.",
-    link: "#!",
+    link: "https://github.com/shree3695/trip-planer",
   },
   {
     id: 5,
