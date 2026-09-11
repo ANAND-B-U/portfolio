@@ -9,79 +9,82 @@ import card6 from "../../assets/images/portfolio-images/card-6.png";
 const projectData = [
   {
     id: 1,
-    image: card1,
-    category: "MACHINE LEARNING",
-    title: "AI-Powered Data Extraction",
+    category: "Personal AI Assistant",
+    title: "OwnGPT",
     description:
-      "Built an intelligent resume parsing system using NLP and machine learning to extract key information from resumes automatically.",
+      "Containerized local LLM assistant built with Go and Ollama. Features streaming responses, conversation memory, and complete data privacy — all running locally.",
+    tech: ["Go", "Ollama", "LLM", "Docker", "Streaming"],
     link: "https://github.com/ANAND-B-U/EliteScan-",
   },
   {
     id: 2,
-    image: card2,
-    category: "DATA ANALYTICS",
-    title: "Sales Dashboard",
+    category: "Lead Management & Analytics",
+    title: "MarketoPulse CRM",
     description:
-      "Developed an interactive sales analytics dashboard using Flask and Python with real-time data visualization and insights.",
+      "Built a scalable CRM integrating lead tracking, analytics dashboards, and automated workflows. Enhanced data pipelines and improved engagement through intelligent insights.",
+    tech: ["Python", "Flask", "SQL", "Power BI"],
     link: "#!",
   },
   {
     id: 3,
-    image: card3,
-    category: "NLP",
-    title: "Image Captioning Tool",
+    category: "Data Crawling & Integration",
+    title: "n8n Workflow Automation",
     description:
-      "Created a sentiment analysis application using NLP techniques to analyze customer feedback and social media sentiment.",
+      "Built automated workflows for data crawling and enrichment using SERP API and Google Maps API. Integrated Firecrawl and Crawl4AI for context-aware extraction.",
+    tech: ["n8n", "SERP API", "Google Maps", "Firecrawl", "Crawl4AI"],
     link: "#!",
   },
   {
     id: 4,
-    image: card4,
-    category: "WEB DEVELOPMENT",
-    title: "AI Travel Planner",
+    category: "AI-Powered Document Parsing",
+    title: "EliteScan Business Card OCR",
     description:
-      "Developed a full-stack e-commerce platform with Flask backend, featuring user authentication, product management, and payment integration.",
-    link: "https://github.com/shree3695/trip-planer",
+      "Developed an OCR system converting 500+ business cards into structured JSON via Flask API with fallback logic. Automated CRM sync through n8n, saving 15+ hours weekly.",
+    tech: ["Python", "Flask", "n8n", "JSON", "OCR"],
+    link: "https://github.com/ANAND-B-U/EliteScan-",
   },
   {
     id: 5,
-    image: card5,
-    category: "AUTOMATION",
-    title: "Data Extraction Pipeline",
+    category: "Retrieval-Augmented Generation",
+    title: "RAG Pipeline with Firecrawl",
     description:
-      "Built an automated data extraction pipeline using Python to scrape and process data from multiple sources efficiently.",
+      "Implemented RAG pipelines using Firecrawl and Crawl4AI to enable semantic search and contextual data retrieval for AI applications. Improved query relevance and response accuracy.",
+    tech: ["Firecrawl", "Crawl4AI", "Python", "LLM", "Vector DB"],
     link: "#!",
   },
   {
     id: 6,
-    image: card6,
-    category: "AI/ML",
-    title: "Predictive Analytics Model",
+    category: "Predictive Analytics",
+    title: "ML Forecasting Model",
     description:
-      "Developed predictive models using machine learning algorithms to forecast trends and support data-driven decision making.",
+      "Developed predictive models using machine learning algorithms to forecast trends and support data-driven decision making with high accuracy rates.",
+    tech: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib"],
     link: "#!",
   },
- 
-
 ];
 
 const Portfolio = () => {
   return (
-    <div
-      className="content mt-10 md:mt-15 xl:mt-25 mb-10 md:mb-25 max-xxl:p-2"
+    <div 
+      className="content mt-4 md:mt-2 mb-2 md:mb-2 px-2 md:px-10 lg:px-24" 
       id="portfolio"
     >
-      <div className="xl:mb-12 mb-4">
-        <div className="max-sm:px-2 text-center mx-auto max-w-144.25">
-          <p className="section-title text-[32px] md:text-[36px]">Portfolio</p>
-          <p className="font-normal text-[16px] max-sm:text-[13px] pt-5 text-gray-400">
-            Here's a selection of my recent work, showcasing my skills in
-            creating user-centric and visually appealing interfaces.
-          </p>
+      {/* Header - Left Aligned "03 SELECTED WORK" */}
+      <div className="mb-12">
+        <div className="max-w-6xl">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-[#8b5cf6] font-mono text-lg font-bold">03</span>
+            <span className="text-gray-500 text-sm tracking-[0.25em] font-semibold uppercase">
+              Selected Work
+            </span>
+            <div className="flex-1 h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
+          </div>
         </div>
       </div>
-      <div className="mx-auto flex justify-center">
-        <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6 w-full">
+      
+      {/* Projects Grid */}
+      <div className="mx-auto">
+        <div className="grid xl:grid-cols-2 gap-6 w-full max-w-6xl">
           {projectData.map((data, index) => (
             <Projects data={data} key={index} />
           ))}

@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ViewCount from "../viewCount/ViewCount";
+import logoImg from "./logo.png"; // 👈 Import your logo
 
 const navItems = [
   { id: 1, name: "Home", url: "home" },
@@ -80,8 +81,15 @@ const NavBar = () => {
               duration={600}
               className="flex items-center gap-3 cursor-pointer"
             >
-              <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-white text-black flex items-center justify-center text-LG font-bold shadow-lg transition-transform duration-300 border border-white hover:scale-110">
-                A
+              <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center shadow-lg transition-transform duration-300 border border-white/20 hover:scale-110 overflow-hidden">
+                
+                {/* Image now fills the entire circle perfectly */}
+                <img 
+                  src={logoImg} 
+                  alt="Anand B Logo" 
+                  className="w-full h-full object-cover" 
+                />
+                
               </div>
             </Link>
           </div>
