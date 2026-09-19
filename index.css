@@ -592,6 +592,10 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #3b82f6 #0a0a0a;
 }
+/* background: transparent !important; */
+  .logo-img {
+    mix-blend-mode: screen; /* Makes black pixels transparent */
+  }
 
 @media (max-width: 768px) {
   #introduction {

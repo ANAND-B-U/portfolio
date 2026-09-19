@@ -79,15 +79,15 @@ const NavBar = () => {
               to="home"
               smooth={true}
               duration={600}
-              className="flex items-center gap-3 cursor-pointer"
+              className="flex items-center gap-3 cursor-pointer group"
             >
-              <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center shadow-lg transition-transform duration-300 border border-white/20 hover:scale-110 overflow-hidden">
+              <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center transition-transform duration-300 hover:scale-110 overflow-hidden relative">
                 
-                {/* Image now fills the entire circle perfectly */}
+                {/* Image now fills the entire circle perfectly - No border, no shadow */}
                 <img 
                   src={logoImg} 
                   alt="Anand B Logo" 
-                  className="w-full h-full object-cover" 
+                  className="w-full h-full object-cover mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity" 
                 />
                 
               </div>
