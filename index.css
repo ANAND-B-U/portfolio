@@ -557,6 +557,42 @@ html {
   }
 }
 
+
+/* Custom Scrollbar with Blue to Purple Transition */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; /* Matches your dark background */
+}
+
+::-webkit-scrollbar-thumb {
+  /* Blue to Purple gradient */
+  background: linear-gradient(to bottom, #3b82f6, #a855f7); 
+  background-size: 100% 300%; /* Stretches the gradient */
+  border-radius: 10px;
+  
+  /* Animates the background position based on scroll */
+  animation: scrollbar-gradient linear;
+  animation-timeline: scroll(root);
+}
+
+@keyframes scrollbar-gradient {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% 100%;
+  }
+}
+
+/* Firefox Fallback (Firefox doesn't support gradient scrollbars yet) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #0a0a0a;
+}
+
 @media (max-width: 768px) {
   #introduction {
     padding-top: 120px !important;
