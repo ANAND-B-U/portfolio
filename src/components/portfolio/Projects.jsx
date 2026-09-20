@@ -1,6 +1,6 @@
 const Projects = ({ data }) => {
   return (
-    <div className="group relative bg-black border border-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+    <div className="group relative bg-black border border-gray-800 rounded-xl overflow-hidden hover:border-gray-700 transition-all duration-500 h-full flex flex-col">
       
       {/* Image Container with Overlay */}
       <div className="relative h-64 overflow-hidden">
@@ -11,14 +11,16 @@ const Projects = ({ data }) => {
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
         />
         
-        {/* Category Badge */}
+        {/* Category Badge - Solid Black */}
         <div className="absolute top-4 left-4 z-20">
-          <span className="px-3 py-1 text-xs font-semibold text-white bg-[#8b5cf6]/90 backdrop-blur-sm rounded-full">
-            {data.category}
-          </span>
+          <div className="px-4 py-1.5 bg-black border border-gray-700 rounded-full group-hover:border-transparent group-hover:shadow-[0_0_12px_#8b5cf6,0_0_20px_#22d3ee] transition-all duration-300">
+            <span className="text-xs font-bold text-white">
+              {data.category}
+            </span>
+          </div>
         </div>
 
-        {/* GitHub Link Button - Shows on Hover */}
+        {/* GitHub Link Button */}
         <a 
           href={data.link}
           className="absolute top-4 right-4 z-20 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-[#8b5cf6]"
@@ -31,7 +33,9 @@ const Projects = ({ data }) => {
 
       {/* Content */}
       <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#8b5cf6] transition-colors duration-300">
+        
+        {/* UPDATED: Title with Violet to Cyan Gradient */}
+        <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-cyan-400 mb-3">
           {data.title}
         </h3>
         
@@ -52,7 +56,7 @@ const Projects = ({ data }) => {
         </div>
       </div>
 
-      {/* Bottom Gradient Line (Purple to Cyan matching your image) */}
+      {/* Bottom Gradient Line (Purple to Cyan) */}
       <div className="h-1 bg-gradient-to-r from-[#8b5cf6] to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
     </div>
   );
