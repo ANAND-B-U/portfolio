@@ -1,39 +1,46 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { animateScroll } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const scrollToTop = () => {
-  animateScroll.scrollToTop(options); /* To Top */
-  //   animateScroll.scrollToBottom(options); /* To Bottom */
-};
-
-const options = {
-  duration: 500,
-  smooth: true,
-};
-
 const ScrollToTop = () => {
-  const [position, setPosition] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setPosition(window.scrollY);
+    const toggleVisibility = () => {
+      // Show button when scrolled down more than 300px
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", toggleVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="flex justify-end relative  sm:me-10 z-10 transition-all">
-      <a
-        onClick={scrollToTop}
-        className={`fixed bottom-3 me-5 w-10 h-10 sm:w-12.5 sm:h-12.5 lg:w-15 lg:h-15 flex justify-center items-center rounded-full transition delay-150 duration-500 ease-in-out hover:scale-120 hover:cursor-pointer bg-picto-primary hover:bg-picto-primary-dark text-white ${
-          position < 200 && "scale-0"
-        }`}
-      >
-        <FontAwesomeIcon icon={faAngleUp} size="2xl" />
-      </a>
-    </div>
+    <button
+      onClick={scrollToTop}
+      className={`fixed bottom-4 right-12 z-50 inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0ea5e9] to-[#38bdf8] text-white shadow-lg shadow-[#0ea5e9]/20 transition-all duration-300 hover:scale-110 ${
+        isVisible 
+          ? "opacity-100 translate-y-0" 
+          : "opacity-0 translate-y-4 pointer-events-none"
+      }`}
+      aria-label="Back to top"
+    >
+      <FontAwesomeIcon icon={faAngleUp} />
+    </button>
   );
 };
 

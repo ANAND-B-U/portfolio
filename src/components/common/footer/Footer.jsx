@@ -1,5 +1,3 @@
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SocialMedia from "../socialMedia/SocialMedia";
 
 const copyrightYear = new Date().getFullYear();
@@ -19,13 +17,6 @@ const Footer = () => {
 
         <div className="flex items-center gap-4">
           <SocialMedia />
-          <a
-            href="#home"
-            className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0ea5e9] to-[#38bdf8] text-white shadow-lg shadow-[#0ea5e9]/20"
-            aria-label="Back to top"
-          >
-            <FontAwesomeIcon icon={faAngleUp} />
-          </a>
         </div>
       </div>
     </footer>
