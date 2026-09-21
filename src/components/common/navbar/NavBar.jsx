@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ViewCount from "../viewCount/ViewCount";
-import logoImg from "./logo.png"; // 👈 Import your logo
+import logoImg from "./logo.png"; 
 
 const navItems = [
   { id: 1, name: "Home", url: "home" },
@@ -24,6 +24,7 @@ const NavBar = () => {
   const [position, setPosition] = useState(0);
   const [isDark, setIsDark] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const toggleTheme = () => {
     setIsDark((prev) => !prev);
@@ -36,7 +37,16 @@ const NavBar = () => {
   }, [isDark]);
 
   useEffect(() => {
-    const handleScroll = () => setPosition(window.scrollY);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setPosition(scrollY);
+      
+      // Calculate scroll progress percentage
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -60,20 +70,33 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        position > 50
-          ? "bg-black/80 backdrop-blur-xl border-b border-white/5"
-          : "bg-transparent"
-      }`}
-    >
-      {/* Main Container: Full width with side padding */}
-      <div className="w-full px-4 sm:px-8 py-4">
-        
-        {/* 3-Column Grid Layout */}
-        <div className="grid grid-cols-3 items-center">
+    <div className="sticky top-0 z-50">
+      {/* Scroll Progress Bar - Thin line at the very top */}
+      <div className="w-full h-1 bg-gray-800/50 overflow-hidden">
+        <div
+          className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 transition-all duration-150 ease-out"
+          style={{ 
+            width: `${scrollProgress}%`,
+            boxShadow: "0 0 10px rgba(6, 182, 212, 0.5)"
+          }}
+        />
+      </div>
+
+      {/* Main Navbar */}
+      <div
+        className={`w-full backdrop-blur-xl border-b border-white/5 transition-all duration-500 ${
+          position > 50
+            ? "bg-black/80"
+            : "bg-transparent"
+        }`}
+      >
+        {/* Main Container: Full width with side padding */}
+        <div className="w-full px-4 sm:px-8 py-4">
           
-          {/* 1. LEFT: Logo (Pushed to full left side) */}
+          {/* 3-Column Grid Layout */}
+          <div className="grid grid-cols-3 items-center">
+            
+          {/* 1. LEFT: Logo */}
           <div className="flex justify-start">
             <Link
               to="home"
@@ -82,19 +105,16 @@ const NavBar = () => {
               className="flex items-center gap-3 cursor-pointer group"
             >
               <div className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-black flex items-center justify-center transition-transform duration-300 hover:scale-110 overflow-hidden relative">
-                
-                {/* Image now fills the entire circle perfectly - No border, no shadow */}
                 <img 
                   src={logoImg} 
                   alt="Anand B Logo" 
                   className="w-full h-full object-cover mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity" 
                 />
-                
               </div>
             </Link>
           </div>
 
-          {/* 2. CENTER: The Oval Navbar (Perfectly centered) */}
+          {/* 2. CENTER: The Oval Navbar */}
           <div className="flex justify-center">
             <div className="hidden lg:flex items-center bg-[#0a0a0a]/90 border border-white/10 rounded-full px-2 py-1.5 shadow-[0_0_15px_rgba(0,0,0,0.5)] backdrop-blur-md">
               <ul className="flex items-center gap-1 text-[14px] font-semibold">
@@ -123,10 +143,9 @@ const NavBar = () => {
             </div>
           </div>
 
-          {/* 3. RIGHT: Actions (Pushed to full right side) */}
+          {/* 3. RIGHT: Actions */}
           <div className="flex justify-end">
             <div className="flex items-center gap-4">
-              {/* Resume Button */}
               <a
                 href="/ANAND_B_Resume.pdf"
                 download="ANAND_B_Resume.pdf"
@@ -137,7 +156,6 @@ const NavBar = () => {
 
               <ViewCount />
 
-              {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
                 className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 hover:bg-white/10 hover:text-white transition text-lg text-gray-400 hover:scale-110"
@@ -148,6 +166,7 @@ const NavBar = () => {
             </div>
           </div>
 
+          </div>
         </div>
       </div>
     </div>
