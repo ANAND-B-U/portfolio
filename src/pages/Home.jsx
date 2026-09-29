@@ -2,7 +2,7 @@ import Introduction from "../components/introduction/Introduction";
 import Profile from "../components/profile/Profile";
 import WorkProcess from "../components/workProcess/WorkProcess";
 import Portfolio from "../components/portfolio/Portfolio";
-import WorkTogether from "../components/workTogether/WorkTogether";
+import WorkTogether from "../components/Certificaates/certifications";
 import Skills from "../components/skills/Skills";
 import ScrollIndicator from "../components/ScrollIndicator/ScrollIndicator";
 import Contact from "../components/contact/Contact";
