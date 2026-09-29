@@ -35,7 +35,7 @@ const Certificates = () => {
       date: "Feb 2022",
       credentialId: "6C73NZXBWU9U",
       icon: faSquareRootVariable,
-      link: "#",
+      link: "https://www.coursera.org/account/accomplishments/verify/6C73NZXBWU9U",
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ const Certificates = () => {
       issuer: "HCL GUVI",
       date: "Sep 2024",
       icon: faCloud,
-      link: "#",
+      link: "https://drive.google.com/file/d/1McfhQ7_crPg4W_jL7c_gRKBm0CTl6B-n/view",
     },
   ];
 
